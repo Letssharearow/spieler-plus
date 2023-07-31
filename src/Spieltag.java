@@ -53,7 +53,8 @@ public class Spieltag
 		this.istDabei = spieltag.istDabei;
 	}
 
-	public Spieltag(Spiel spiel, String teamname)
+	public Spieltag(Spiel spiel, String teamname, String absageStunden, String erinnerungStunden, String treffenZeit,
+		Teilnahme teilnahme)
 	{
 		if (teamname.equals(spiel.teamA) || teamname.equals(spiel.teamB))
 		{
@@ -68,16 +69,16 @@ public class Spieltag
 		this.endDatum = spiel.datum;
 		this.startZeit = spiel.uhrzeit;
 		this.heimspiel = teamname.equals(spiel.heimteam) ? "ja" : "nein";
-		this.absageStunden = "0";
-		this.erinnerungStunden = "24";
+		this.absageStunden = absageStunden;
+		this.erinnerungStunden = erinnerungStunden;
 
 		this.spieltyp = this.heimspiel.equals("ja") ? "Heimspiel" : "Auswärts";
-		this.treffenZeit = "";
+		this.treffenZeit = treffenZeit;
 		this.endZeit = "";
 		this.gelaende = "Halle";
 		this.adresse = "";
 		this.infos = "";
-		this.teilnahme = "Spieler müssen zusagen";
+		this.teilnahme = teilnahme.toString();
 		this.nominierung = "";
 
 		this.teamname = teamname;
@@ -94,7 +95,14 @@ public class Spieltag
 		{
 			istDabei = true;
 		}
-		this.gegner += ", " + (teamname.equals(spiel.teamA) ? spiel.teamB : spiel.teamA);
+		if (!teamname.equals(spiel.teamA) && !this.gegner.contains(spiel.teamA))
+		{
+			this.gegner += ", " + spiel.teamA;
+		}
+		if (!teamname.equals(spiel.teamB) && !this.gegner.contains(spiel.teamB))
+		{
+			this.gegner += ", " + spiel.teamB;
+		}
 		this.heimspiel = teamname.equals(spiel.heimteam) ? "ja" : this.heimspiel;
 	}
 

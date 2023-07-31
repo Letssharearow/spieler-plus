@@ -1,22 +1,22 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExcelReader
 {
-	public static String TEAM_NAME = "VfL Volkach II";
+	public static final String FILE_PATH = "utf8 csv.csv";
+	public static String TEAM_NAME = "VfL Volkach";
 
 	public static void main(String[] args)
 	{
-		readCsv("spielplan.csv");
+		readCsv(FILE_PATH, TEAM_NAME);
 	}
 
-	private static void readCsv(String filePath)
+	private static void readCsv(String filePath, String teamName)
 	{
 		List<Spieltag> spieltage = new ArrayList<>();
-		ExcelWriter writer = new ExcelWriter("spielplan_importieren.csv");
+		ExcelWriter writer = new ExcelWriter("spielplan_importieren_" + teamName + ".csv");
 
 		try (BufferedReader bf = new BufferedReader(new FileReader(filePath)))
 		{
@@ -27,16 +27,16 @@ public class ExcelReader
 			{
 				String[] values = tabelle.split(";");
 				String[] values2 = uhrzeit.split(";");
-				Spiel spiel = new Spiel(values, values2[0], TEAM_NAME);
+				Spiel spiel = new Spiel(values, values2[0], teamName);
 				if (spieltag == null)
 				{
-					spieltag = new Spieltag(spiel, TEAM_NAME);
+					spieltag = new Spieltag(spiel, teamName, "24", "168", "", Teilnahme.ZUSAGEN);
 				}
 				else
 				{
 					if (spieltag.isSameDay(spiel))
 					{
-						spieltag.addGame(spiel, TEAM_NAME);
+						spieltag.addGame(spiel, teamName);
 					}
 					else
 					{

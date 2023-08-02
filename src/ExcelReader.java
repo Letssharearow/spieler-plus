@@ -5,8 +5,10 @@ import java.util.List;
 
 public class ExcelReader
 {
-	public static final String FILE_PATH = "utf8 csv.csv";
+	public static final String FILE_PATH = "spielplan Damen 1 normal csv.csv";
 	public static String TEAM_NAME = "VfL Volkach";
+	public static String STUNDEN_ABSAGEN = "24";
+	public static String STUNDEN_ERINNERUNG = "168";
 
 	public static void main(String[] args)
 	{
@@ -16,7 +18,7 @@ public class ExcelReader
 	private static void readCsv(String filePath, String teamName)
 	{
 		List<Spieltag> spieltage = new ArrayList<>();
-		ExcelWriter writer = new ExcelWriter("spielplan_importieren_" + teamName + ".csv");
+		ExcelWriter writer = new ExcelWriter("importieren_" + FILE_PATH);
 
 		try (BufferedReader bf = new BufferedReader(new FileReader(filePath)))
 		{
@@ -30,7 +32,8 @@ public class ExcelReader
 				Spiel spiel = new Spiel(values, values2[0], teamName);
 				if (spieltag == null)
 				{
-					spieltag = new Spieltag(spiel, teamName, "24", "168", "", Teilnahme.ZUSAGEN);
+					spieltag = new Spieltag(spiel, teamName, STUNDEN_ABSAGEN, STUNDEN_ERINNERUNG, "",
+						Teilnahme.ZUSAGEN);
 				}
 				else
 				{

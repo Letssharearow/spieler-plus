@@ -1,3 +1,5 @@
+package main;
+
 public class Spiel
 {
 	String datum;
@@ -31,7 +33,7 @@ public class Spiel
 
 	@Override public String toString()
 	{
-		return "Spiel{" + "datum='" + datum + '\'' + ", nummer='" + nummer + '\'' + ", teamA='" + teamA + '\''
+		return "main.Spiel{" + "datum='" + datum + '\'' + ", nummer='" + nummer + '\'' + ", teamA='" + teamA + '\''
 			+ ", teamB='" + teamB + '\'' + ", uhrzeit='" + uhrzeit + '\'' + '}';
 	}
 }

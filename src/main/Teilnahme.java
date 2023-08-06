@@ -1,3 +1,5 @@
+package main;
+
 public enum Teilnahme
 {
 	ZUSAGEN("Spieler müssen zusagen"), ABSAGEN("Spieler müssen absagen");

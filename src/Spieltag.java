@@ -61,7 +61,7 @@ public class Spieltag
 			istDabei = true;
 		}
 		this.gegner = (teamname.equals(spiel.teamA) ? spiel.teamB : spiel.teamA);
-		if (!teamname.equals(spiel.teamB))
+		if (!teamname.equals(spiel.teamB) && !this.gegner.equals(spiel.teamB))
 		{
 			this.gegner += ", " + spiel.teamB;
 		}

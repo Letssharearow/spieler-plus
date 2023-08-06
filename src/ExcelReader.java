@@ -19,40 +19,42 @@ public class ExcelReader
 	{
 		List<Spieltag> spieltage = new ArrayList<>();
 		ExcelWriter writer = new ExcelWriter("importieren_" + FILE_PATH);
-		int countGames = 0;
 
 		try (BufferedReader bf = new BufferedReader(new FileReader(filePath)))
 		{
 			String tabelle = bf.readLine();
 			String uhrzeit = bf.readLine();
-			Spieltag spieltag = null;
+			Spieltag spieltag = new Spieltag(teamName, STUNDEN_ABSAGEN, STUNDEN_ERINNERUNG, "", Teilnahme.ZUSAGEN);
 			while (tabelle != null && uhrzeit != null)
 			{
 				String[] values = tabelle.split(";");
 				String[] values2 = uhrzeit.split(";");
-				Spiel spiel = new Spiel(values, values2[0], teamName);
-				if (spieltag == null)
+				Spiel spiel = new Spiel(values, values2[0]);
+
+				if (!spieltag.hasEnemy())
 				{
-					spieltag = new Spieltag(spiel, teamName, STUNDEN_ABSAGEN, STUNDEN_ERINNERUNG, "",
-						Teilnahme.ZUSAGEN);
-					countGames++;
+					spieltag.addGame(spiel, teamName);
+				}
+				else if (spieltag.isSameDay(spiel))
+				{
+					if (spieltag.isPlaying(spiel))
+					{
+						spieltag.addGame(spiel, teamName);
+					}
 				}
 				else
 				{
-					if (spieltag.isSameDay(spiel) && countGames <= 2)
-					{
-						spieltag.addGame(spiel, teamName);
-						countGames++;
-					}
-					else
-					{
-						spieltage.add(new Spieltag(spieltag));
-						spieltag = null;
-						countGames = 0;
-					}
+					spieltage.add(new Spieltag(spieltag));
+					spieltag = new Spieltag(teamName, STUNDEN_ABSAGEN, STUNDEN_ERINNERUNG, "", Teilnahme.ZUSAGEN);
 				}
+
 				tabelle = bf.readLine();
 				uhrzeit = bf.readLine();
+			}
+
+			if (spieltag.hasEnemy())
+			{
+				spieltage.add(new Spieltag(spieltag));
 			}
 		}
 		catch (IOException e)

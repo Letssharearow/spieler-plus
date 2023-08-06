@@ -7,7 +7,7 @@ public class Spiel
 	String uhrzeit;
 	String heimteam;
 
-	public Spiel(String[] tabelle, String uhrzeit, String teamname)
+	public Spiel(String[] tabelle, String uhrzeit)
 	{
 		this.datum = tabelle[0].replaceAll("(([A-Z]|[a-z])*, )", "");
 		this.nummer = tabelle[1];

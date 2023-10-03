@@ -57,7 +57,7 @@ public class ExcelWriter
 
 	public static void main(String[] args)
 	{
-		ExcelWriter excelWriter = new ExcelWriter("testFile2.csv");
+		ExcelWriter excelWriter = new ExcelWriter("");
 		excelWriter.writeIntoFile("test;test;tesdfsdfst;test;");
 		excelWriter.close();
 	}

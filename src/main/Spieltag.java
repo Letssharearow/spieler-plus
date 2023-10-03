@@ -41,35 +41,8 @@ public class Spieltag
 		this.teamname = spieltag.teamname;
 	}
 
-	public Spieltag(Spiel spiel, String teamname, String absageStunden, String erinnerungStunden, String treffenZeit,
-		Teilnahme teilnahme)
-	{
-		this.gegner = (teamname.equals(spiel.teamA) ? spiel.teamB : spiel.teamA);
-		if (!teamname.equals(spiel.teamB) && !this.gegner.equals(spiel.teamB))
-		{
-			this.gegner += ", " + spiel.teamB;
-		}
-		this.startDatum = spiel.datum;
-		this.endDatum = spiel.datum;
-		this.startZeit = spiel.uhrzeit;
-		this.heimspiel = teamname.equals(spiel.heimteam) ? "ja" : "nein";
-		this.absageStunden = absageStunden;
-		this.erinnerungStunden = erinnerungStunden;
-
-		this.spieltyp = this.heimspiel.equals("ja") ? "Heimspiel" : "Auswärts";
-		this.treffenZeit = treffenZeit;
-		this.endZeit = "";
-		this.gelaende = "Halle";
-		this.adresse = "";
-		this.infos = "";
-		this.teilnahme = teilnahme.toString();
-		this.nominierung = "";
-
-		this.teamname = teamname;
-	}
-
 	public Spieltag(String teamname, String absageStunden, String erinnerungStunden, String treffenZeit,
-		Teilnahme teilnahme)
+		Teilnahme teilnahme, String infos)
 	{
 		this.absageStunden = absageStunden;
 		this.erinnerungStunden = erinnerungStunden;
@@ -78,11 +51,12 @@ public class Spieltag
 		this.endZeit = "";
 		this.gelaende = "Halle";
 		this.adresse = "";
-		this.infos = "";
+		this.infos = infos;
 		this.teilnahme = teilnahme.toString();
 		this.nominierung = "";
 
 		this.teamname = teamname;
+
 	}
 
 	public boolean isSameDay(Spiel spiel)
@@ -132,7 +106,7 @@ public class Spieltag
 		return addIfNotNull(this.spieltyp) + addIfNotNull(this.gegner) + addIfNotNull(this.startDatum) + addIfNotNull(
 			this.endDatum) + addIfNotNull(this.startZeit) + addIfNotNull(this.treffenZeit) + addIfNotNull(this.endZeit)
 			+ addIfNotNull(this.heimspiel) + addIfNotNull(this.gelaende) + addIfNotNull(this.adresse) + addIfNotNull(
-			this.infos) + addIfNotNull(this.teilnahme) + addIfNotNull(this.nominierung) + addIfNotNull(
-			this.absageStunden) + addIfNotNull(this.erinnerungStunden);
+			this.teilnahme) + addIfNotNull(this.nominierung) + addIfNotNull(this.absageStunden) + addIfNotNull(
+			this.erinnerungStunden) + addIfNotNull(this.infos);
 	}
 }

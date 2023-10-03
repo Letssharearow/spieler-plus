@@ -13,8 +13,8 @@ public class Spiel
 	{
 		this.datum = tabelle[0].replaceAll("(([A-Z]|[a-z])*, )", "");
 		this.nummer = tabelle[1];
-		this.teamA = tabelle[2].replace(" (H)", "");
-		this.teamB = tabelle[3].replace(" (H)", "");
+		this.teamA = tabelle[2].replace(" (H)", "").replace("\"", "");
+		this.teamB = tabelle[3].replace(" (H)", "").replace("\"", "");
 		this.uhrzeit = uhrzeit.replace(" Uhr", ":00");
 
 		if (tabelle[2].contains("(H)"))

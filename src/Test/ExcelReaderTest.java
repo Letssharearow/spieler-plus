@@ -8,5 +8,6 @@ class ExcelReaderTest
 {
 	@Test public void testInputOutput()
 	{
+		
 	}
 }

@@ -6,10 +6,11 @@ import java.util.List;
 
 public class ExcelReader
 {
-	public static final String FILE_PATH = "damen 1.csv";
-	public static String TEAM_NAME = "VfL Volkach";
+	public static final String FILE_PATH = "herren2test.csv";
+	public static String TEAM_NAME = "VfL Volkach II";
 	public static String STUNDEN_ABSAGEN = "24";
 	public static String STUNDEN_ERINNERUNG = "168";
+	public static String SPIELTAG_INFOS = "https://volleyball.bayern/ergebnisse/erwachsene/unterfranken?tx_bvv_ausgabe%5Baction%5D=zeigeliga&tx_bvv_ausgabe%5BbezirkMannschaftZuordnung%5D=1000&tx_bvv_ausgabe%5BbezirkZuordnung%5D=60&tx_bvv_ausgabe%5Bwettbewerbid%5D=28735&cHash=3b07bdaaf63d3f7b602810f9faae7bdd#bvvligaallespiele";
 
 	public static void main(String[] args)
 	{
@@ -25,7 +26,8 @@ public class ExcelReader
 		{
 			String tabelle = bf.readLine();
 			String uhrzeit = bf.readLine();
-			Spieltag spieltag = new Spieltag(teamName, STUNDEN_ABSAGEN, STUNDEN_ERINNERUNG, "", Teilnahme.ZUSAGEN);
+			Spieltag spieltag = new Spieltag(teamName, STUNDEN_ABSAGEN, STUNDEN_ERINNERUNG, "", Teilnahme.ZUSAGEN,
+				SPIELTAG_INFOS);
 			while (tabelle != null && uhrzeit != null)
 			{
 				String[] values = tabelle.split(";");
@@ -46,7 +48,12 @@ public class ExcelReader
 				else
 				{
 					spieltage.add(new Spieltag(spieltag));
-					spieltag = new Spieltag(teamName, STUNDEN_ABSAGEN, STUNDEN_ERINNERUNG, "", Teilnahme.ZUSAGEN);
+					spieltag = new Spieltag(teamName, STUNDEN_ABSAGEN, STUNDEN_ERINNERUNG, "", Teilnahme.ZUSAGEN,
+						SPIELTAG_INFOS);
+					if (spieltag.isPlaying(spiel))
+					{
+						spieltag.addGame(spiel, teamName);
+					}
 				}
 
 				tabelle = bf.readLine();
@@ -62,6 +69,7 @@ public class ExcelReader
 		{
 			e.printStackTrace();
 		}
+		writer.writeIntoFile("");
 		spieltage.forEach(sp -> writer.writeIntoFile(sp.toString()));
 	}
 

@@ -6,11 +6,11 @@ import java.util.List;
 
 public class ExcelReader
 {
-	public static final String FILE_PATH = "herren2test.csv";
+	public static final String FILE_PATH = "herren2.csv";
 	public static String TEAM_NAME = "VfL Volkach II";
 	public static String STUNDEN_ABSAGEN = "24";
 	public static String STUNDEN_ERINNERUNG = "168";
-	public static String SPIELTAG_INFOS = "https://volleyball.bayern/ergebnisse/erwachsene/unterfranken?tx_bvv_ausgabe%5Baction%5D=zeigeliga&tx_bvv_ausgabe%5BbezirkMannschaftZuordnung%5D=1000&tx_bvv_ausgabe%5BbezirkZuordnung%5D=60&tx_bvv_ausgabe%5Bwettbewerbid%5D=28735&cHash=3b07bdaaf63d3f7b602810f9faae7bdd#bvvligaallespiele";
+	public static String SPIELTAG_INFOS = "https://volleyball.bayern/ergebnisse/erwachsene/unterfranken?tx_bvv_ausgabe%5Baction%5D=zeigeliga&tx_bvv_ausgabe%5BbezirkMannschaftZuordnung%5D=1000&tx_bvv_ausgabe%5BbezirkZuordnung%5D=60&tx_bvv_ausgabe%5Bwettbewerbid%5D=33817&cHash=88a0748db7d24ce801049e270e1ceb82#bvvligaallespiele";
 
 	public static void main(String[] args)
 	{

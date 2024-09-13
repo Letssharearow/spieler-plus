@@ -1,23 +1,23 @@
 Create S+ Events for games following these instructions
 
-Copy paste All games Table from here
-https://volleyball.bayern/ergebnisse/erwachsene/unterfranken?tx_bvv_ausgabe%5Baction%5D=zeigeliga&tx_bvv_ausgabe%5BbezirkMannschaftZuordnung%5D=1000&tx_bvv_ausgabe%5BbezirkZuordnung%5D=60&tx_bvv_ausgabe%5Bwettbewerbid%5D=28721&cHash=41f2f3b9c02ceca9cf2cd9f35c77d784#bvvligaallespiele
+Copy the All games Table from volleyball.bayern (for example here) without the headers
+https://volleyball.bayern/ergebnisse/erwachsene/unterfranken?tx_bvv_ausgabe%5Baction%5D=zeigeliga&tx_bvv_ausgabe%5BbezirkMannschaftZuordnung%5D=1000&tx_bvv_ausgabe%5BbezirkZuordnung%5D=60&tx_bvv_ausgabe%5Bwettbewerbid%5D=33817&cHash=88a0748db7d24ce801049e270e1ceb82#bvvligaallespiele
 
-without the headers like so<br>
+like so<br>
 ![img.png](Files/img.png)
 
 paste it into blanc excel sheet<br>
 ![img_1.png](Files/img_1.png)
 
-make sure the cells are alligned correctly (time should be in a separate line)
+make sure the cells are alligned correctly (time should be in a separate row)
 
 saves as regular CSV<br>
 ![img_2.png](Files/img_2.png)
 
-open the proejct with IntelliJ go to src/main/ExcelReader
+open the project with IntelliJ go to src/main/ExcelReader
 
-move the CSV into the Main Folder of the project make sure the file path in "ExcelReader" is set correctly to the CSV
-name that you choose.
+move the CSV into the Projekt Folder (it should be on the same level as this README), make sure the file path in "
+ExcelReader" is set correctly to the CSV name that you choose.
 
 enter your values for make sure your team name matches the one in the excel file (copy paste cell value that doesn't
 contain "(H)")
@@ -32,7 +32,7 @@ run ExcelReader main function
 
 open the created file (which has a similar name to the file that you created) with excel
 
-Let the first line empty (because S+ will ignore the first line when importing)
+Leave the first line empty (because S+ will ignore the first line when importing)
 
 save as xls
 

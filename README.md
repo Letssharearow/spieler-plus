@@ -1,3 +1,5 @@
+Create S+ Events for games following these instructions
+
 Copy paste All games Table from here
 https://volleyball.bayern/ergebnisse/erwachsene/unterfranken?tx_bvv_ausgabe%5Baction%5D=zeigeliga&tx_bvv_ausgabe%5BbezirkMannschaftZuordnung%5D=1000&tx_bvv_ausgabe%5BbezirkZuordnung%5D=60&tx_bvv_ausgabe%5Bwettbewerbid%5D=28721&cHash=41f2f3b9c02ceca9cf2cd9f35c77d784#bvvligaallespiele
 
